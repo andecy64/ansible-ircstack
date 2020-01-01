@@ -24,9 +24,9 @@ jobs:
         run: |
           sudo apt install docker
           python -m pip install --upgrade pip
-          mkdir -p $ANSIBLE_PATH/$ANSIBLE_OWNER/$ANSIBLE_ROLE_NAME
+          mkdir -p ${ANSIBLE_PATH}/${ANSIBLE_OWNER}/${ANSIBLE_ROLE_NAME}
           ls -lahtr
-          cp -r ./ $ANSIBLE_PATH/$ANSIBLE_OWNER/$ANSIBLE_ROLE_NAME
+          cp -r ./ ${ANSIBLE_PATH}/${ANSIBLE_OWNER}/${ANSIBLE_ROLE_NAME}
       - name: Test role against debian 9
         run: |
           molecule test
