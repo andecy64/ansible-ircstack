@@ -5,10 +5,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        image:
+          - debian9
+          - ubuntu1804
     steps:
       - uses: actions/checkout@v2
         with:
-          path: andecy64.ircstack
+          path: "${{ github.repository }}"
+
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
@@ -18,15 +24,11 @@ jobs:
           sudo apt install docker
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          mv "${{ github.repository }}" andecy64.ircstack
+          cd andecy64.ircstack
       - name: Test role against debian 9
         run: |
           molecule test
           molecule destroy
         env:
-          MOLECULE_DISTRO: debian9
-      - name: Test role against ubuntu 18.04
-        run: |
-          molecule test
-          molecule destroy
-        env:
-          MOLECULE_DISTRO: ubuntu1804
+          MOLECULE_DISTRO: "${{ matrix.image }}"
