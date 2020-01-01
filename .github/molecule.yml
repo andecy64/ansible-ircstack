@@ -1,0 +1,30 @@
+---
+name: Molecule Test
+on: [push, commit]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          sudo apt install docker
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test role against debian 9
+        run: |
+          molecule test
+          molecule destroy
+        env:
+          MOLECULE_DISTRO: debian9
+      - name: Test role against ubuntu 18.04
+        run: |
+          molecule test
+          molecule destroy
+        env:
+          MOLECULE_DISTRO: ubuntu1804
