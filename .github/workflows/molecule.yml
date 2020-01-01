@@ -16,7 +16,6 @@ jobs:
           - ubuntu1804
     steps:
       - uses: actions/checkout@v2
-        ref: github-actions-test
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
