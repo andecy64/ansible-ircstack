@@ -3,7 +3,7 @@ name: Molecule Test
 on: [push, pull_request]
 jobs:
   build:
-    env:
+    # env:
       # ANSIBLE_PATH: $HOME/.ansible/collections/ansible_collections
       # ANSIBLE_OWNER: andecy64
       # ANSIBLE_ROLE_NAME: ircstack
