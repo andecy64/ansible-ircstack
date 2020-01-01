@@ -1,1 +1,1 @@
-molecule==2.22
+molecule[docker]==2.22
