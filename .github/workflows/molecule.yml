@@ -12,8 +12,8 @@ jobs:
           - ubuntu1804
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: "${{ github.repository }}"
+        # with:
+        #   path: "${{ github.repository }}"
 
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
@@ -23,9 +23,10 @@ jobs:
         run: |
           sudo apt install docker
           python -m pip install --upgrade pip
+          echo $GITHUB_WORKSPACE
+          mv $GITHUB_WORKSPACE/ansible-ircstack $GITHUB_WORKSPACE/andecy64.ircstack
+          cd $GITHUB_WORKSPACE/andecy64.ircstack
           pip install -r requirements.txt
-          mv "${{ github.repository }}" andecy64.ircstack
-          cd andecy64.ircstack
       - name: Test role against debian 9
         run: |
           molecule test
