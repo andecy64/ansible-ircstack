@@ -24,8 +24,8 @@ jobs:
           sudo apt install docker
           python -m pip install --upgrade pip
           echo $GITHUB_WORKSPACE
-          mv $GITHUB_WORKSPACE/ansible-ircstack $GITHUB_WORKSPACE/andecy64.ircstack
-          cd $GITHUB_WORKSPACE/andecy64.ircstack
+          mv $GITHUB_WORKSPACE andecy64.ircstack
+          cd andecy64.ircstack
           pip install -r requirements.txt
       - name: Test role against debian 9
         run: |
