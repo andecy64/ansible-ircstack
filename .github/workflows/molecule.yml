@@ -4,9 +4,9 @@ on: [push, pull_request]
 jobs:
   build:
     env:
-      ANSIBLE_PATH: $HOME/.ansible/collections/ansible_collections
-      ANSIBLE_OWNER: andecy64
-      ANSIBLE_ROLE_NAME: ircstack
+      # ANSIBLE_PATH: $HOME/.ansible/collections/ansible_collections
+      # ANSIBLE_OWNER: andecy64
+      # ANSIBLE_ROLE_NAME: ircstack
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,9 +24,9 @@ jobs:
         run: |
           sudo apt install docker
           python -m pip install --upgrade pip
-          mkdir -p ${ANSIBLE_PATH}/${ANSIBLE_OWNER}/${ANSIBLE_ROLE_NAME}
+          mkdir -p ~/.ansible/collections/ansible_collections/andecy64/ircstack
           ls -lahtr
-          cp -r ./ ${ANSIBLE_PATH}/${ANSIBLE_OWNER}/${ANSIBLE_ROLE_NAME}
+          cp -r ./ ~/.ansible/collections/ansible_collections/andecy64/ircstack
       - name: Test role against debian 9
         run: |
           molecule test
