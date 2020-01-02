@@ -22,7 +22,7 @@ jobs:
           python-version: 3.7
       - name: Install dependencies
         run: |
-          sudo apt install docker
+          sudo apt install docker git
           python -m pip install --upgrade pip
           # mkdir -p $GITHUB_REPOSITORY/molecule/default/roles/andecy64.ircstack
           ls -lahtr
