@@ -24,9 +24,9 @@ jobs:
         run: |
           sudo apt install docker
           python -m pip install --upgrade pip
-          mkdir -p ~/.ansible/collections/ansible_collections/andecy64/ircstack
+          mkdir -p ~/.ansible/roles/andecy64.ircstack
           ls -lahtr
-          cp -r ./ ~/.ansible/collections/ansible_collections/andecy64/ircstack
+          cp -r ./ ~/.ansible/roles/andecy64.ircstack
           pip install -r requirements.txt
       - name: "Test role against debian 9"
         run: |
