@@ -3,17 +3,12 @@ name: Molecule Test
 on: [push, pull_request]
 jobs:
   build:
-    # env:
-      # ANSIBLE_PATH: $HOME/.ansible/collections/ansible_collections
-      # ANSIBLE_OWNER: andecy64
-      # ANSIBLE_ROLE_NAME: ircstack
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         image:
           - debian9
-          - ubuntu1804
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.7
@@ -24,9 +19,6 @@ jobs:
         run: |
           sudo apt install docker git
           python -m pip install --upgrade pip
-          # mkdir -p $GITHUB_REPOSITORY/molecule/default/roles/andecy64.ircstack
-          ls -lahtr
-          # cp -r ./ $GITHUB_REPOSITORY/molecule/default/roles/andecy64.ircstack
           pip install -r requirements.txt
       - name: "Test role against debian 9"
         run: |
