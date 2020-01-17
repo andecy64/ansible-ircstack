@@ -10,7 +10,8 @@ platforms:
   - name: instance
     image: geerlingguy/docker-${MOLECULE_DISTRO}-ansible:latest
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    privileged: true
+    capabilities:
+      - SYS_ADMIN
     # security_opts:
     #   - seccomp=unconfined
     # tmpfs:
