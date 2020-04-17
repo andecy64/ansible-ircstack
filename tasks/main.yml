@@ -3,7 +3,6 @@
 - include_tasks: environment.yml
 
 - include_tasks: setup-debian9.yml
-  when: ansible_os_family == 'Debian' and ansible_distribution_version == '9'
 
 - include_tasks: weechat.yml
 
