@@ -36,7 +36,7 @@ server {
 
 
   location /weechat {
-      proxy_pass https://weechat;
+      proxy_pass http://weechat;
       proxy_http_version 1.1;
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection "upgrade";
